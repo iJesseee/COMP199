@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +27,8 @@ public class MainActivity extends Activity {
 	private int hour;
 	private int minute;
 
+	private MediaPlayer mpButtonClick;
+	
 	static final int TIME_DIALOG_ID = 999;
 
 	@Override
@@ -33,28 +36,31 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		//set up button to make a sound when clicked
+		mpButtonClick = MediaPlayer.create(this, R.raw.btnclick);
+
 		setCurrentTimeOnView();
 		addListenerOnButton();
 
 	}
-	
+
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu){
+	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
+
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item){
+	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-	    case R.id.about:
-	    	startActivity(new Intent(this, AboutActivity.class));
-	    	return true;
-	    case R.id.action_settings:
-	    	startActivity(new Intent(this, SettingsActivity.class));
-	    	return true;
-	    default:
-	    	return super.onOptionsItemSelected(item);
+		case R.id.about:
+			startActivity(new Intent(this, AboutActivity.class));
+			return true;
+		case R.id.action_settings:
+			startActivity(new Intent(this, SettingsActivity.class));
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
 	}
 
@@ -88,6 +94,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 
 				showDialog(TIME_DIALOG_ID);
+				mpButtonClick.start();
 
 			}
 
@@ -113,19 +120,20 @@ public class MainActivity extends Activity {
 			hour = selectedHour;
 			minute = selectedMinute;
 			String amOrPm = "";
-			
-			if(hour > 12){
+
+			if (hour > 12) {
 				hour -= 12;
 				amOrPm = "PM";
-			} else if(hour <= 0){
+			} else if (hour <= 0) {
 				hour += 12;
 				amOrPm = "AM";
 			} else {
 				amOrPm = "AM";
 			}
 			// set current time into textview
-			tvDisplayTime.setText(new StringBuilder().append(pad(hour))
-					.append(":").append(pad(minute)).append(" ").append(amOrPm));
+			tvDisplayTime
+					.setText(new StringBuilder().append(pad(hour)).append(":")
+							.append(pad(minute)).append(" ").append(amOrPm));
 
 			// set current time into timepicker
 			timePicker1.setCurrentHour(hour);
