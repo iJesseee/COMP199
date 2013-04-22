@@ -21,24 +21,31 @@ public final class R {
         public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int defaulticon=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int about=0x7f0a0009;
-        public static final int action_settings=0x7f0a000a;
-        public static final int btnChangeTime=0x7f0a0006;
-        public static final int digitalClock1=0x7f0a0008;
+        public static final int about=0x7f0a000e;
+        public static final int action_settings=0x7f0a000f;
+        public static final int btnChangeTime=0x7f0a0008;
+        public static final int btnStopAlarm=0x7f0a000d;
+        public static final int digitalClock1=0x7f0a0007;
         public static final int radio0=0x7f0a0003;
         public static final int radio1=0x7f0a0004;
         public static final int radio2=0x7f0a0005;
         public static final int radioGroup1=0x7f0a0000;
         public static final int radioGroup2=0x7f0a0001;
+        public static final int set_alarm=0x7f0a000c;
+        public static final int start_repeating=0x7f0a000b;
+        public static final int stop_repeating=0x7f0a000a;
         public static final int timePicker1=0x7f0a0002;
-        public static final int tvTime=0x7f0a0007;
+        public static final int tvTime=0x7f0a0006;
+        public static final int txtSeconds=0x7f0a0009;
     }
     public static final class layout {
         public static final int activity_about=0x7f030000;
         public static final int activity_main=0x7f030001;
+        public static final int alarm=0x7f030002;
     }
     public static final class menu {
         public static final int main=0x7f090000;
